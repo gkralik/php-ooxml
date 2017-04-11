@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-namespace GKralik\OOXML\WordProcessing\Iterator;
+namespace GKralik\OOXML\Common\Iterator;
 
 use GKralik\OOXML\WordProcessing\Elements\AbstractContainer;
 use GKralik\OOXML\WordProcessing\Elements\AbstractElement;
