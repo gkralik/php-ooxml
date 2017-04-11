@@ -67,6 +67,30 @@ class Image extends AbstractElement
 		return file_get_contents($this->target);
 	}
 
+    /**
+     * @return string
+     */
+    public function getImageType()
+    {
+        return $this->imageType;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
 	public function __toString()
 	{
 		return "<image:{$this->id}:{$this->target}>";
