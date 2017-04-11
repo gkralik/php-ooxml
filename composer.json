@@ -1,0 +1,17 @@
+{
+    "name": "gkralik/php-ooxml",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Gregor Kralik",
+            "email": "g.kralik@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "GKralik\\OOXML\\": "src/"
+        }
+    }
+}
