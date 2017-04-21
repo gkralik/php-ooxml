@@ -23,7 +23,7 @@ namespace GKralik\OOXML\WordProcessing\Elements;
 class AbstractContainer extends AbstractElement
 {
 	/** @var AbstractElement[] */
-	private $elements = null;
+	private $elements = [];
 
 	public function getElements()
 	{
