@@ -21,6 +21,7 @@ namespace GKralik\OOXML\WordProcessing;
 use DOMElement;
 use GKralik\OOXML\Common\XMLReader;
 use GKralik\OOXML\WordProcessing\Elements\Image;
+use GKralik\OOXML\WordProcessing\Elements\LineBreak;
 use GKralik\OOXML\WordProcessing\Elements\Paragraph;
 use GKralik\OOXML\WordProcessing\Elements\Run;
 use GKralik\OOXML\WordProcessing\Elements\Text;
@@ -113,6 +114,9 @@ class Reader
 				$textContent = $element->nodeValue;
 				$run->addElement(new Text($textContent));
 			}
+			else if ($element->nodeName == 'w:br') {
+			    $run->addElement(new LineBreak);
+            }
 			else if ($element->nodeName == 'w:drawing')
 			{
 				$drawing = $this->readDrawing($element);
