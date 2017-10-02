@@ -39,10 +39,12 @@ class Image extends AbstractElement
 	/** @var int */
 	private $height;
 
-	public function __construct($id, $target)
+	public function __construct($id, $target, $parentElement = null)
 	{
 		$this->id     = $id;
 		$this->target = $target;
+
+		parent::__construct($parentElement);
 
 		$this->analyzeImage();
 	}

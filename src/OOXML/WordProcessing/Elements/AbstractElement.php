@@ -21,5 +21,40 @@ namespace GKralik\OOXML\WordProcessing\Elements;
 
 abstract class AbstractElement
 {
+    /** @var AbstractElement|null */
+    private $parentElement = null;
+
+    /**
+     * AbstractElement constructor.
+     *
+     * @param AbstractElement|null $parentElement
+     */
+    public function __construct($parentElement = null)
+    {
+        if ($parentElement !== null && $parentElement instanceof AbstractElement) {
+            $this->setParentElement($parentElement);
+        }
+    }
+
+    /**
+     * @return AbstractElement|null
+     */
+    public function getParentElement()
+    {
+        return $this->parentElement;
+    }
+
+    /**
+     * @param AbstractElement|null $parentElement
+     *
+     * @return AbstractElement
+     */
+    public function setParentElement($parentElement)
+    {
+        $this->parentElement = $parentElement;
+
+        return $this;
+    }
+
 
 }

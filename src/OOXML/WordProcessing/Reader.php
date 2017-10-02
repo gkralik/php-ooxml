@@ -112,16 +112,17 @@ class Reader
 			if ($element->nodeName == 'w:t')
 			{
 				$textContent = $element->nodeValue;
-				$run->addElement(new Text($textContent));
+				$run->addElement(new Text($textContent, $run));
 			}
 			else if ($element->nodeName == 'w:br') {
-			    $run->addElement(new LineBreak);
+			    $run->addElement(new LineBreak($run));
             }
 			else if ($element->nodeName == 'w:drawing')
 			{
 				$drawing = $this->readDrawing($element);
 				if ($drawing !== null)
 				{
+				    $drawing->setParentElement($run);
 					$run->addElement($drawing);
 				}
 			}
@@ -154,20 +155,20 @@ class Reader
 		return $image;
 	}
 
-	protected function readParagraphStyle(DOMElement $node)
-	{
-		if (!$this->documentReader->elementExists('w:pPr', $node))
-		{
-			return [];
-		}
+    protected function readParagraphStyle(DOMElement $node)
+    {
+        if (!$this->documentReader->elementExists('w:pPr', $node))
+        {
+            return [];
+        }
 
-		$styleNode = $this->documentReader->getElement('w:pPr', $node);
-		$styles    = [
-			'styleName' => $this->documentReader->getAttribute('w:val', $styleNode, 'w:pStyle'),
-		];
+        $styleNode = $this->documentReader->getElement('w:pPr', $node);
+        $styles    = [
+            'styleName' => $this->documentReader->getAttribute('w:val', $styleNode, 'w:pStyle'),
+        ];
 
-		return $styles;
-	}
+        return $styles;
+    }
 
 	public function readRelationships()
 	{

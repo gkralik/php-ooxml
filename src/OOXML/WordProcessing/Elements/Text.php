@@ -21,21 +21,28 @@ namespace GKralik\OOXML\WordProcessing\Elements;
 
 class Text extends AbstractElement
 {
-	/** @var string */
-	private $textContent;
+    /** @var string */
+    private $textContent;
 
-	public function __construct($content)
-	{
-		$this->textContent = $content;
-	}
+    /**
+     * Text constructor.
+     *
+     * @param string               $content
+     * @param AbstractElement|null $parentElement
+     */
+    public function __construct($content, $parentElement = null)
+    {
+        $this->textContent = $content;
+        parent::__construct($parentElement);
+    }
 
-	public function getText()
-	{
-		return $this->textContent;
-	}
+    public function getText()
+    {
+        return $this->textContent;
+    }
 
-	public function __toString()
-	{
-		return $this->textContent;
-	}
+    public function __toString()
+    {
+        return $this->textContent;
+    }
 }

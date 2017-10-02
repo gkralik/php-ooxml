@@ -23,9 +23,11 @@ class Section extends AbstractContainer
 {
 	private $sectionId;
 
-	public function __construct($sectionId)
+	public function __construct($sectionId, $parentElement = null)
 	{
 		$this->sectionId = $sectionId;
+
+        parent::__construct($parentElement);
 	}
 
 }
