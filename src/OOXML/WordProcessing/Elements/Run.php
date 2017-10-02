@@ -21,5 +21,42 @@ namespace GKralik\OOXML\WordProcessing\Elements;
 
 class Run extends AbstractContainer
 {
+    /** @var array */
+    private $properties;
+
+    /**
+     * @param string $propertyName
+     *
+     * @return mixed|null
+     */
+    public function getProperty($propertyName)
+    {
+        if (!isset($this->properties[$propertyName])) {
+            return null;
+        }
+
+        return $this->properties[$propertyName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    /**
+     * @param array $properties
+     *
+     * @return Run
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
+
 
 }

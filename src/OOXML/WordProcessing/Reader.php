@@ -105,6 +105,7 @@ class Reader
 	protected function readRun(DOMElement $node)
 	{
 		$run = new Run();
+		$run->setProperties($this->readRunProperties($node));
 
 		$elements = $this->documentReader->getElements('*', $node);
 		foreach ($elements as $element)
@@ -168,6 +169,21 @@ class Reader
         ];
 
         return $styles;
+    }
+
+    protected function readRunProperties(DOMElement $node)
+    {
+        if (!$this->documentReader->elementExists('w:rPr', $node))
+        {
+            return [];
+        }
+
+        $propertiesNode = $this->documentReader->getElement('w:rPr', $node);
+        $properties    = [
+            'vertAlign' => $this->documentReader->getAttribute('w:vertAlign', $propertiesNode),
+        ];
+
+        return $properties;
     }
 
 	public function readRelationships()
