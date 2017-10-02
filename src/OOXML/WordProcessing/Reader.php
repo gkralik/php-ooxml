@@ -180,7 +180,7 @@ class Reader
 
         $propertiesNode = $this->documentReader->getElement('w:rPr', $node);
         $properties    = [
-            'vertAlign' => $this->documentReader->getAttribute('w:vertAlign', $propertiesNode),
+            'vertAlign' => $this->documentReader->getAttribute('w:val', $propertiesNode, 'w:vertAlign'),
         ];
 
         return $properties;
