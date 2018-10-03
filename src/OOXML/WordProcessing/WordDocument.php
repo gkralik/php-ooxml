@@ -25,7 +25,7 @@ use GKralik\OOXML\WordProcessing\Elements\Section;
 class WordDocument
 {
 	/** @var Section[] */
-	private $sections = null;
+	private $sections = [];
 
 	/**
 	 * @return Section
